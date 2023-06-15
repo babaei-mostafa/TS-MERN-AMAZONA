@@ -10,3 +10,5 @@ export type Product = {
   rating: number
   numReviews: number
 }
+
+
