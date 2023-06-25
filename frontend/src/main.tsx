@@ -15,6 +15,7 @@ import ProductPage from './pages/ProductPage.tsx'
 import axios from 'axios'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { StoreProvider } from './store.tsx'
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/'
@@ -34,11 +35,13 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </HelmetProvider>
+    <StoreProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </HelmetProvider>
+    </StoreProvider>
   </React.StrictMode>
 )
