@@ -22,8 +22,8 @@ const initialState: AppState = {
     cartItems: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems')!)
       : [],
-    shippingAddress: localStorage.getItem('shipppingAddress')
-      ? JSON.parse(localStorage.getItem('shipppingAddress')!)
+    shippingAddress: localStorage.getItem('shippingAddress')
+      ? JSON.parse(localStorage.getItem('shippingAddress')!)
       : {},
     paymentMethod: localStorage.getItem('paymentMethod')
       ? localStorage.getItem('paymentMethod')!
@@ -41,6 +41,7 @@ type Action =
   | { type: 'CART_REMOVE_ITEM'; payload: CartItem }
   | { type: 'USER_SIGNIN'; payload: UserInfo }
   | { type: 'USER_SIGNOUT' }
+  | { type: 'SAVE_SHIPPING_ADDRESS'; payload: ShippingAddress }
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
@@ -90,6 +91,11 @@ function reducer(state: AppState, action: Action): AppState {
           taxPrice: 0,
           totalPrice: 0,
         },
+      }
+    case 'SAVE_SHIPPING_ADDRESS':
+      return {
+        ...state,
+        cart: { ...state.cart, shippingAddress: action.payload },
       }
     default:
       return state
