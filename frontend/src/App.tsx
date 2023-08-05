@@ -29,19 +29,19 @@ function App() {
   }
 
   const signoutHandler = () => {
-    dispatch({type: "USER_SIGNOUT"})
-    localStorage.removeItem("userInfo")
-    localStorage.removeItem("cartItems")
-    localStorage.removeItem("shippingAddress")
-    localStorage.removeItem("paymentMethod")
-    window.location.href = "/signin"
+    dispatch({ type: 'USER_SIGNOUT' })
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('cartItems')
+    localStorage.removeItem('shippingAddress')
+    localStorage.removeItem('paymentMethod')
+    window.location.href = '/signin'
   }
 
   return (
-    <div className="d-flex flex-column vh-100">
+    <div className="d-flex flex-column vh-100" style={{ overflow: 'hidden' }}>
       <ToastContainer position="bottom-center" limit={1} />
       <header>
-        <Navbar className='px-4' bg={mode} variant={mode} expand="lg">
+        <Navbar className="px-4" bg={mode} variant={mode} expand="lg">
           <Container>
             <LinkContainer to="/">
               <Navbar.Brand>MB Shop</Navbar.Brand>

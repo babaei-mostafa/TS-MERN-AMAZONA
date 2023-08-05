@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 import { User, UserModel } from '../models/userModel'
 import { generateToken } from '../utils'
 
-export const userRouter = express.Router() 
+export const userRouter = express.Router()
 // POST /api/users/signin
 userRouter.post(
   '/signin',
